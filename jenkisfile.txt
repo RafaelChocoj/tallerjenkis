@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    tools {nodejs "NodeJs"}
+
+    stages {
+
+        stage('Git') {
+            steps {
+                git branch: 'master', credentialsId: 'aquicredenciales', url: 'direccion github'
+            }
+        }
+        stage('Install') {
+            steps {
+                echo 'Instalando dependencias'
+                dir('server'){
+                    sh 'npm install'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Haciendo pruebas para server'
+                dir('server'){
+                    sh 'npm run test'
+                }
+            }
+        }
+
+        
+        stage('Deploy') {
+            steps {
+                dir('server'){
+                    echo 'haciendo el Deploy..'
+ 
+                    //sh 'node src/index.js'
+                }      
+            }
+        }
+    }
+}
