@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    tools {nodejs "NodeJs"} //herramientas
+
+    stages {
+
+        stage('Git') {
+            steps {
+                git branch: 'rama', credentialsId: 'credencial_aqui', url: 'direccion repo'
+            }
+        }
+        stage('Install') {
+            steps {
+                echo 'Instalando dependencias'
+                dir('server'){
+ 
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Haciendo pruebas para server'
+                dir('server'){
+ 
+                }
+            }
+        }
+
+        
+        stage('Deploy') {
+            steps {
+                dir('server'){
+                    echo 'haciendo el Deploy..'
+
+                }      
+            }
+        }
+    }
+}
