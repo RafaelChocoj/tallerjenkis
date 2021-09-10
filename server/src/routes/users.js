@@ -22,8 +22,8 @@ router.post('/login', async (req, res) => {
 router.get('/get_users', async (req, res) => {
 
     var users_list
-    //users_list = []
-    users_list= [{id:1,user:"user1"},{id:2,user:"admin"},{id:3,user:"xd"},{id:4,user:"root"}]
+    users_list = []
+    //users_list= [{id:1,user:"user1"},{id:2,user:"admin"},{id:3,user:"xd"},{id:4,user:"root"}]
     if (users_list.length > 0 ){
         res.status(200).json(users_list);
     } else {
